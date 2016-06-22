@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/device_list"
+        android:gravity="center"
+        android:textSize="18sp"
+        ></TextView>
+<Button 
+    android:id="@+id/refresh"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="刷新"
+    android:background="#2292DD"
+    android:textColor="#ffffff"
+    ></Button>
+<ListView 
+    android:id="@+id/lamp_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    
+</ListView>
+
+
+</LinearLayout>
