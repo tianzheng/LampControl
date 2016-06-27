@@ -1,28 +1,28 @@
-package com.example.lampcontrol1.bean;
+package com.example.lampcontrol.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author 
- * 返回数据结果
+ * @author
+ * 杩斿洖鏁版嵁缁撴灉
  *
  */
 public class GetDeviceList implements Serializable{
-  
-  
+
+
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 后台设备总数
+	 * 鍚庡彴璁惧鎬绘暟
 	 */
 	private int total;
 	/**
-	 * 设备集合
+	 * 璁惧闆嗗悎
 	 */
 	private ArrayList<Device> device;
-	
-	
-	
+
+
+
 	public int getTotal() {
 		return total;
 	}

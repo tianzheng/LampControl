@@ -1,4 +1,4 @@
-package com.example.lampcontrol1;
+package com.example.lampcontrol;
 
 import java.util.ArrayList;
 
@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.lampcontrol1.adapter.DeviceAdapter;
-import com.example.lampcontrol1.bean.Device;
-import com.example.lampcontrol1.bean.GetDeviceList;
-import com.example.lampcontrol1.bean.GetDeviceResponse;
+import com.example.lampcontrol.adapter.DeviceAdapter;
+import com.example.lampcontrol.bean.Device;
+import com.example.lampcontrol.bean.GetDeviceList;
+import com.example.lampcontrol.bean.GetDeviceResponse;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;

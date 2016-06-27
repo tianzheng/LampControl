@@ -1,4 +1,4 @@
-package com.example.lampcontrol1;
+package com.example.lampcontrol;
 
 import java.io.UnsupportedEncodingException;
 
@@ -24,13 +24,13 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 
 public class ControlActivity extends BaseActivity {
-	// Éè±¸ĞÅÏ¢¶ÔÏó
+	// è®¾å¤‡ä¿¡æ¯å¯¹è±¡
 	Device device;
-	
+
 	private final static String ip="192.168.1.104";
 
 	/**
-	 * µÆµÄÏÔÊ¾
+	 * ç¯çš„æ˜¾ç¤º
 	 */
 	ImageView lamp;
 
@@ -43,12 +43,12 @@ public class ControlActivity extends BaseActivity {
 	}
 
 	/**
-	 * »ñÈ¡ĞòÁĞ»¯Êı¾İ
+	 * è·å–åºåˆ—åŒ–æ•°æ®
 	 */
 	private void getIntentData() {
-		// ÉùÃ÷£¬ÊµÀı»¯
+		// å£°æ˜ï¼Œå®ä¾‹åŒ–
 		Intent intent = getIntent();
-		// »ñÈ¡Éè±¸Êı¾İ
+		// è·å–è®¾å¤‡æ•°æ®
 		device = (Device) intent.getExtras().get("device_key");
 	}
 
@@ -57,32 +57,32 @@ public class ControlActivity extends BaseActivity {
 		back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// ·µ»Ø»ò¹Ø±ÕÒ³Ãæ
+				// è¿”å›æˆ–å…³é—­é¡µé¢
 				finish();
 			}
 		});
-		// µÆµÄÏÔÊ¾
+		// ç¯çš„æ˜¾ç¤º
 		lamp = (ImageView) findViewById(R.id.img_lamp);
 		if (device.isLampState()) {
 			lamp.setBackgroundResource(R.drawable.light_on);
 		} else {
 			lamp.setBackgroundResource(R.drawable.light_off);
 		}
-		// µÆµÄÃû³Æ
+		// ç¯çš„åç§°
 		TextView name = (TextView) findViewById(R.id.device_name);
-		name.setText("Ãû×Ö£º" + device.getName());
-		// ºì¹âÉ«Öµ
+		name.setText("åå­—ï¼š" + device.getName());
+		// çº¢å…‰è‰²å€¼
 		SeekBar seekBarR = (SeekBar) findViewById(R.id.seekBarR);
 		seekBarR.setProgress(device.getLampR());
-		// ÂÌ¹âÉ«Öµ
+		// ç»¿å…‰è‰²å€¼
 		SeekBar seekBarG = (SeekBar) findViewById(R.id.seekBarG);
 		seekBarG.setProgress(device.getLampG());
-		// À¶¹âÉ«Öµ
+		// è“å…‰è‰²å€¼
 		SeekBar seekBarB = (SeekBar) findViewById(R.id.seekBarB);
 		seekBarB.setProgress(device.getLampB());
-		// ¿ªµÆ°´Å¥
+		// å¼€ç¯æŒ‰é’®
 		Button open = (Button) findViewById(R.id.open);
-		// ¹ØµÆ°´Å¥
+		// å…³ç¯æŒ‰é’®
 		Button close = (Button) findViewById(R.id.close);
 
 		open.setOnClickListener(new OnClickListener() {
@@ -106,60 +106,60 @@ public class ControlActivity extends BaseActivity {
 
 		seekBarR.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				Log.e("Stop==", "½ø¶È=" + seekBar.getProgress());
-				// ÉèÖÃºìµÆÑÕÉ«
+				Log.e("Stop==", "è¿›åº¦=" + seekBar.getProgress());
+				// è®¾ç½®çº¢ç¯é¢œè‰²
 				device.setLampR(seekBar.getProgress());
 				device.setLampBright(true);
-				// Http ÇëÇó
+				// Http è¯·æ±‚
 				requestHttpPost();
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				Log.e("Start==", "½ø¶È=" + seekBar.getProgress());
+				Log.e("Start==", "è¿›åº¦=" + seekBar.getProgress());
 			}
 
 			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
+										  boolean fromUser) {
 
 			}
 		});
 
 		seekBarG.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				Log.e("Stop==", "½ø¶È=" + seekBar.getProgress());
-				// ÉèÖÃÂÌµÆÑÕÉ«
+				Log.e("Stop==", "è¿›åº¦=" + seekBar.getProgress());
+				// è®¾ç½®ç»¿ç¯é¢œè‰²
 				device.setLampR(seekBar.getProgress());
 				device.setLampBright(true);
-				// Http ÇëÇó
+				// Http è¯·æ±‚
 				requestHttpPost();
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				Log.e("Start==", "½ø¶È=" + seekBar.getProgress());
+				Log.e("Start==", "è¿›åº¦=" + seekBar.getProgress());
 			}
 
 			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
+										  boolean fromUser) {
 
 			}
 		});
 
 		seekBarB.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				Log.e("Stop==", "½ø¶È=" + seekBar.getProgress());
-				// ÉèÖÃÀ¶µÆÑÕÉ«
+				Log.e("Stop==", "è¿›åº¦=" + seekBar.getProgress());
+				// è®¾ç½®è“ç¯é¢œè‰²
 				device.setLampR(seekBar.getProgress());
 				device.setLampBright(true);
-				// Http ÇëÇó
+				// Http è¯·æ±‚
 				requestHttpPost();
 			}
 
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				Log.e("Start==", "½ø¶È=" + seekBar.getProgress());
+				Log.e("Start==", "è¿›åº¦=" + seekBar.getProgress());
 			}
 
 			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
+										  boolean fromUser) {
 
 			}
 		});
@@ -167,19 +167,19 @@ public class ControlActivity extends BaseActivity {
 	}
 
 	/**
-	 * Http posÇëÇó
-	 * 
+	 * Http posè¯·æ±‚
+	 *
 	 * @throws UnsupportedEncodingException
 	 */
 	private void requestHttpPost() {
-		// ÌáÊ¾¿òÏÔÊ¾
+		// æç¤ºæ¡†æ˜¾ç¤º
 		dialog.show();
-		// Éú³ÉJson
+		// ç”ŸæˆJson
 		String requsetJson = gson.toJson(device);
 
-		Log.e("requsetJson==", "½ø¶È=" + requsetJson);
+		Log.e("requsetJson==", "è¿›åº¦=" + requsetJson);
 
-		// ÉùÃ÷£¬ÊµÀı»¯¶ÔÏó
+		// å£°æ˜ï¼Œå®ä¾‹åŒ–å¯¹è±¡
 		RequestParams params = new RequestParams("UTF-8");
 		try {
 			params.setBodyEntity(new StringEntity(requsetJson, "UTF-8"));
@@ -191,16 +191,16 @@ public class ControlActivity extends BaseActivity {
 		httpUtils.send(HttpMethod.POST, url, params,
 				new RequestCallBack<String>() {
 					public void onFailure(HttpException arg0, String arg1) {
-						Toast.makeText(ControlActivity.this, "ÇëÇóÊ§°Ü",
+						Toast.makeText(ControlActivity.this, "è¯·æ±‚å¤±è´¥",
 								Toast.LENGTH_LONG).show();
-						// ¹Ø±ÕÌáÊ¾¿ò
+						// å…³é—­æç¤ºæ¡†
 						dialog.dismiss();
 					}
 
 					public void onSuccess(ResponseInfo<String> arg0) {
 						Toast.makeText(ControlActivity.this,
-								"ÇëÇó³É¹¦" + arg0.result, Toast.LENGTH_LONG).show();
-						// ¹Ø±ÕÌáÊ¾¿ò
+								"è¯·æ±‚æˆåŠŸ" + arg0.result, Toast.LENGTH_LONG).show();
+						// å…³é—­æç¤ºæ¡†
 						dialog.dismiss();
 					}
 				});
@@ -208,18 +208,18 @@ public class ControlActivity extends BaseActivity {
 	}
 
 	/**
-	 * ¿ª¹ØµÆ
+	 * å¼€å…³ç¯
 	 */
 	private void openOrClose() {
 
-		// ÌáÊ¾¿òÏÔÊ¾
+		// æç¤ºæ¡†æ˜¾ç¤º
 		dialog.show();
-		// Éú³ÉJson
+		// ç”ŸæˆJson
 		String requsetJson = gson.toJson(device);
 
-		Log.e("requsetJson==", "½ø¶È=" + requsetJson);
+		Log.e("requsetJson==", "è¿›åº¦=" + requsetJson);
 
-		// ÉùÃ÷£¬ÊµÀı»¯¶ÔÏó
+		// å£°æ˜ï¼Œå®ä¾‹åŒ–å¯¹è±¡
 		RequestParams params = new RequestParams("UTF-8");
 		try {
 			params.setBodyEntity(new StringEntity(requsetJson, "UTF-8"));
@@ -232,16 +232,16 @@ public class ControlActivity extends BaseActivity {
 		httpUtils.send(HttpMethod.POST, url, params,
 				new RequestCallBack<String>() {
 					public void onFailure(HttpException arg0, String arg1) {
-						Toast.makeText(ControlActivity.this, "ÇëÇóÊ§°Ü",
+						Toast.makeText(ControlActivity.this, "è¯·æ±‚å¤±è´¥",
 								Toast.LENGTH_LONG).show();
-						// ¹Ø±ÕÌáÊ¾¿ò
+						// å…³é—­æç¤ºæ¡†
 						dialog.dismiss();
 					}
 
 					public void onSuccess(ResponseInfo<String> arg0) {
 						Toast.makeText(ControlActivity.this,
-								"ÇëÇó³É¹¦" + arg0.result, Toast.LENGTH_LONG).show();
-						// ¹Ø±ÕÌáÊ¾¿ò
+								"è¯·æ±‚æˆåŠŸ" + arg0.result, Toast.LENGTH_LONG).show();
+						// å…³é—­æç¤ºæ¡†
 						dialog.dismiss();
 						if (device.isLampState()) {
 							lamp.setBackgroundResource(R.drawable.light_on);

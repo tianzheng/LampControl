@@ -2,13 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+     android:fitsSystemWindows="true"
+    android:background="@drawable/img_bg"
+    >
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/device_list"
         android:gravity="center"
-        android:textSize="18sp"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
         ></TextView>
 <Button 
     android:id="@+id/refresh"
@@ -17,11 +21,14 @@
     android:text="刷新"
     android:background="#2292DD"
     android:textColor="#ffffff"
+    android:visibility="invisible"
     ></Button>
 <ListView 
     android:id="@+id/lamp_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:dividerHeight="0dp"
+    android:divider="@null"
     >
     
 </ListView>

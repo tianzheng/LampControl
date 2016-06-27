@@ -22,17 +22,21 @@
         android:layout_marginLeft="15dp"
         >
         <TextView
+            android:textColor="#ffffff"
+            android:textSize="18sp"
             android:id="@+id/lamp_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="名字：s01" />
+            />
 
         <TextView
+               android:textColor="#ffffff"
+            android:textSize="18sp"
             android:layout_marginTop="20dp"
             android:id="@+id/lamp_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="状态：关" />
+            />
     </LinearLayout>
 
 </LinearLayout>

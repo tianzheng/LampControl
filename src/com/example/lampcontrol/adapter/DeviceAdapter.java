@@ -1,7 +1,4 @@
-package com.example.lampcontrol1.adapter;
-
-import com.example.lampcontrol1.R;
-import com.example.lampcontrol1.bean.GetDeviceResponse;
+package com.example.lampcontrol.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.lampcontrol.R;
+import com.example.lampcontrol.bean.GetDeviceResponse;
 
 public class DeviceAdapter extends BaseAdapter {
 	/**

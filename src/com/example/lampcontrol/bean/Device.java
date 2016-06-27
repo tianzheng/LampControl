@@ -1,4 +1,4 @@
-package com.example.lampcontrol1.bean;
+package com.example.lampcontrol.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
